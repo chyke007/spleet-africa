@@ -9,7 +9,7 @@ Mongo();
 
 // setup global middleware
 App(server);
-console.log(888);
+
 
 // api router
 server.use("/", apiRouter);
