@@ -6,11 +6,13 @@ import {
   customException,
   formatResult,
   validUrl,
+  validUid,
   BODY_MUST_CONTAIN,
   INVALID_URL_FORMAT,
   UNKNOWN_ERROR,
   URL_ALREADY_EXIST,
-  URL_DOES_NOT_EXIST
+  URL_DOES_NOT_EXIST,
+  INVALID_UID
 } from "../../server/utils";
 
 import {Shortner} from "../model";
@@ -29,6 +31,13 @@ import { URL }  from "../../config";
 const get = async function (req:Request, res:Response, next:NextFunction) {
   const {params:{uid}} = req;
 
+  
+  if(!validUid(uid)){
+    res.status(400);
+    return res.json(customException(INVALID_UID));
+   
+  }
+  
   const exist = await Shortner.findOne({  urlCode: uid });
 
    if (!exist) {
