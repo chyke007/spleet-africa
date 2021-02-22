@@ -26,11 +26,10 @@ import {
     db.setupDB();
         
     it("should respond with HTTP 201", async (done) => {
-        let response = await request.post(`/`)
+        const response = await request.post("/")
         .send(data1)
         .set("Accept", "application/json");
 
-        console.log(response.body)
       expect(response.body.status).toBe(SUCCESS);
       expect(response.body.data).toBeDefined();
       
@@ -39,7 +38,7 @@ import {
     });
 
     it("should respond with HTTP 400 for missing url parameter in body", async (done) => {
-       const response = await request.post('/')
+       const response = await request.post("/")
       .send()
       .set("Accept", "application/json");
       expect(response.body.status).toBe(ERROR);
@@ -50,7 +49,7 @@ import {
     });
 
     it("should respond with HTTP 400 for invalid url format", async (done) => {
-       const response = await request.post(`/`)
+       const response = await request.post("/")
       .send(data2)
       .set("Accept", "application/json");
       expect(response.body.status).toBe(ERROR);
@@ -61,18 +60,18 @@ import {
     });
 
     it("should respond with HTTP 200 for existing url", async (done) => {
-      let response = await request.post(`/`)
+      let response = await request.post("/")
      .send(data1)
      .set("Accept", "application/json");
 
-     response = await request.post(`/`)
+     response = await request.post("/")
      .send(data1)
      .set("Accept", "application/json");
 
      expect(response.body.status).toBe(SUCCESS);
      expect(response.body.message).toBe(URL_ALREADY_EXIST);
-     expect(response.body.data).toBeDefined()
-     expect(response.body.data.longUrl).toBe(data1.url)
+     expect(response.body.data).toBeDefined();
+     expect(response.body.data.longUrl).toBe(data1.url);
 
      expect(response.status).toBe(200);
      done();

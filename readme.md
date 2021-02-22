@@ -9,6 +9,7 @@
 
 <p align="center">
   <a href="#how-to-use">How To Use</a> •
+  <a href="#how-to-test">How To Test</a> •
   <a href="#credits">Credits</a> •
   <a href="#license">License</a> •
 </p>
@@ -27,6 +28,15 @@ To run this application [Node.js](https://nodejs.org/en/download/) v15+ (which c
 
 ```
 sh start-server.sh
+```
+
+## How To Test
+
+```bash
+
+# Run test
+$ npm test
+
 ```
 
 ## Credits

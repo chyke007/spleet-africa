@@ -1,3 +1,3 @@
-import { post } from "./base";
+import { get,post } from "./base";
 
-export default { post };
+export default { get,post };

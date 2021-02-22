@@ -3,6 +3,6 @@ import  Base from "../controller";
 
 const apiRouter = express.Router();
 
-apiRouter.post("/", Base.post);
+apiRouter.get("/:uid", Base.get).post("/", Base.post);
 
 export default apiRouter;

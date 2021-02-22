@@ -1,5 +1,5 @@
 import { Request } from "express";
-import validator from "validator"
+import validator from "validator";
 import { SUCCESS, ERROR} from "./constant";
 
 //Interfaces
@@ -17,7 +17,7 @@ export interface CustomEx {
  * @param  {any} data
  * @return {Object}
  */
-export const customResult = (data:any, message?:String) => {
+export const customResult = (data:any, message?:string) => {
     return  {
         status: SUCCESS,
         data,
@@ -44,5 +44,17 @@ export const customException = (message:string): CustomEx => {
  * @param url 
  */
 export const validUrl = (url: string) => {
-   return validator.isURL(url)
-}
+   return validator.isURL(url);
+};
+
+/**
+ * Returns select data field
+ * @param data 
+ */
+export const formatResult = (data: any) => {
+    return {
+      longUrl: data.longUrl,
+      shortUrl: data.shortUrl,
+      code: data.code
+    };
+  };
